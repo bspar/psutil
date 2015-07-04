@@ -931,6 +931,14 @@ class Process(object):
         """
         return self._proc.memory_info()
 
+    def get_ext_memory_info(self):
+        """This function was renamed in version 2.0.0
+        https://github.com/giampaolo/psutil/blob/b7cc5955fa6c8a1d9a408a4e517dfb321bfb5e2f/HISTORY.rst
+        But plaso still wants to use it
+        2015-07-04 12:24:55,798 [ERROR] (MainProcess) PID:1246 <multi_process> Processing aborted with error: 'Process' object has no attribute 'get_ext_memory_info'.
+        yeah
+        """
+        return memory_info_ex(self)
     def memory_info_ex(self):
         """Return a namedtuple with variable fields depending on the
         platform representing extended memory information about
